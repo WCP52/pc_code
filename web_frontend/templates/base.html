@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }} " rel="stylesheet" />
+
+      <title>{% block title %}Replace Me!{% endblock %}</title>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    </head>
+
+    <body>
+
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Get Phase
+      </button>
+
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Get Frequency
+      </button>
+        <!-- charts template-->
+        {% include "chart.html" %}
+
+        <!-- static scripts -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+        <!-- canvas charts -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/canvasjs.min.js') }}"></script>
+
+        <!--  wcp scripts for generating the charts -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/wcp_chart.js') }}"></script>
+
+        <!-- inserted content goes here -->
+        {% block content %}{% endblock %}
+
+
+    </body>
+</html>
