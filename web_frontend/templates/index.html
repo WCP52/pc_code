@@ -1,18 +1,54 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="{{url_for('static', filename='css/bootstrap.min.css') }} " rel="stylesheet" />
+        <title>USB Gain Phase Analyzer</title>
+        <meta htt[=equiv="X-UA-Compatible" content="IE=edge">
+    </head>
 
-{% block title %} Watson Capstone Project 52 {% endblock %}
+    <body>
+        <div>
+            <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
+                Calibrate
+            </button>
 
-{% block content %}
+            <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Get Phase
+            </button>
+            <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> Get Frequency
+            </button>
+        </div>  
+        <div>
+            <p>min:</p>
+            <textarea rows="1" cols="15" placeholder="1e3"></textarea>
+            <p>max:</p>
+            <textarea rows="1" cols="15" placeholder="150e6"></textarea>
+        </div>
+        <div>
+            <input type="checkbox" name="linear" value="linear">Linear Plot 
+        </div>
+        <div>
+            <p>Console Output</p>
+        </div>
+        
+        <div id="freqResponse" style="height: 300px; width: 50%; float:right">
+        </div>
+       
+        <div id="phaseChart" style="height: 300px; width: 50%; clear:right; float:right">
+        </div>
 
-{% if errors %}
-    {% for error in errors %}
-        <p> {{error}} </p>
-    {% endfor %}
-{% else %}
+        <!-- static scripts -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.0.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-<!-- do nothing -->
+        <!-- canvas charts -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/canvasjs.min.js') }}"></script>
 
-{% endif %}
+        <!--  wcp scripts for generating the charts -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/wcp_chart.js') }}"></script>
 
-{% endblock %}
 
+    </body>
+</html>
